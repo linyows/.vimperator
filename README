@@ -1,3 +1,9 @@
+do
+    $ cd ~/.vimperator
+    $ git clone git@github.com:linyows/.vimperator.git .vimperator
+    $ cd .vimperator
+    $ ln -s .vimperatorrc ../.vimperatorrc
+
 plugin list
 
     megemo_hint.js
