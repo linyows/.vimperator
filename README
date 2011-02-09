@@ -1,8 +1,10 @@
 do
-    $ cd ~/.vimperator
+    $ cd ~/
     $ git clone git@github.com:linyows/.vimperator.git .vimperator
     $ cd .vimperator
-    $ ln -s .vimperatorrc ../.vimperatorrc
+    $ ln -s vimperatorrc ../.vimperatorrc
+    or
+    $ cp vimperatorrc ../.vimperatorrc
 
 plugin list
 
