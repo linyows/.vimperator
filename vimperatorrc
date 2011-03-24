@@ -22,7 +22,7 @@ set titlestring=Firefox
 "set guioptions+=B
 
 "Firefox4.*
-set toolbars=tabs,menu,bookmarks,addons,nonavigation
+set toolbars=tabs,menu,bookmarks,noaddons,nonavigation
 
 " 多重タブを表示時クラッシュするのを防ぐ
 "set nopreload
@@ -132,8 +132,8 @@ map <S-Left> :tabmove! -1<CR>
 "map <A-Down> :set guioptions+=mT<CR>
 "map <A-Up> :set guioptions-=mT<CR>
 "Firefox4.*
-map <A-Down> :set toolbars=tabs,menu,bookmarks,addons,navigation<CR>
-map <A-Up> :set toolbars=tabs,menu,bookmarks,addons,nonavigation<CR>
+map <A-Down> :set toolbars=tabs,menu,bookmarks,noaddons,navigation<CR>
+map <A-Up> :set toolbars=tabs,menu,bookmarks,noaddons,nonavigation<CR>
 
 " . でbuffer
 map . :buffer<Space>
@@ -273,6 +273,9 @@ let g:matanico_status_format='$SERVICENAME:$COMMENT [$SUBJECT:$URL]'
 " :autocmd LocationChange fastladder\.com/reader :fmap! j k s a r p o v c <Space> <S-Space> < >
 " :autocmd LocationChange reader\.livedoor\.com/reader :fmap! j k s a r p o v c <Space> <S-Space> < >
 
+" statusline-toolbar.js
+"set statustoolbars=feed-button,noscript-tbb
+set statustoolbars=star-button
 
 " ----------------------------------------------------------------------------------------
 " CUSTOMIZE
@@ -293,28 +296,28 @@ let g:matanico_status_format='$SERVICENAME:$COMMENT [$SUBJECT:$URL]'
 " })();
 " EOM
 
-javascript <<EOM
-liberator.globalVariables.migrate_elements = [
-    {
-        // star button of awesome bar
-        id:    'star-button',
-        dest:  'security-button',
-        after: true,
-    },
-    {
-        // icon that show the existence of RSS and Atom on current page
-        id:    'feed-button',
-        dest:  'security-button',
-        after: true,
-    },
-    {
-        // favicon of awesome bar
-        id:    'page-proxy-stack',
-        dest:  'liberator-statusline',
-        after: false,
-    },
-];
-EOM
+"javascript <<EOM
+"liberator.globalVariables.migrate_elements = [
+    "{
+        "// star button of awesome bar
+        "id:    'star-button',
+        "dest:  'security-button',
+        "after: true,
+    "},
+    "{
+        "// icon that show the existence of RSS and Atom on current page
+        "id:    'feed-button',
+        "dest:  'security-button',
+        "after: true,
+    "},
+    "{
+        "// favicon of awesome bar
+        "id:    'page-proxy-stack',
+        "dest:  'liberator-statusline',
+        "after: false,
+    "},
+"];
+"EOM
 
 " clock style
 " let clock_format='%d %a %t'
