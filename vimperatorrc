@@ -10,6 +10,7 @@
 " ブラウザタイトルの変更
 set titlestring=Firefox
 
+"Firefox3.*
 " 各ブラウザの表示 [default:rb] (1.2@:m,t,b,s,r)
 " @ m = Menubar
 " @ T = Toolbar
@@ -18,7 +19,10 @@ set titlestring=Firefox
 " @ l = Left Scrollbar
 " @ b = Tab number
 " @ n = Tab number over icon
-set guioptions+=B
+"set guioptions+=B
+
+"Firefox4.*
+set toolbars=tabs,menu,bookmarks,addons,nonavigation
 
 " 多重タブを表示時クラッシュするのを防ぐ
 "set nopreload
@@ -29,14 +33,14 @@ set visualbell
 " ビジュアルベルを無効化（1.2: set visualbellstyle=display:none;）
 highlight Bell display:none
 
-" タブ1つならタブ非表示
-set showtabline=1
+" タブ1つならタブ非表示 Firefox3.*
+"set showtabline=1
 
 " 検索語を強調表示
 set hlsearch
 
-" コマンド入力時にコマンドサジェスト
-set wildoptions=auto
+" コマンド入力時にコマンドサジェスト Firefox3.*
+"set wildoptions=auto
 
 " デフォルト検索エンジン(検索バーの管理→キーワード
 " @ g = Google検索
@@ -61,7 +65,6 @@ set history=0
 
 " migemo_hint.js
 set hintmatching=custom
-
 
 " ----------------------------------------------------------------------------------------
 " KEY MAP
@@ -125,8 +128,12 @@ map <S-Right> :tabmove! +1<CR>
 map <S-Left> :tabmove! -1<CR>
 
 " Alt+↑/↓でメニューの表示/非表示
-map <A-Down> :set guioptions+=mT<CR>
-map <A-Up> :set guioptions-=mT<CR>
+"Firefox3.*
+"map <A-Down> :set guioptions+=mT<CR>
+"map <A-Up> :set guioptions-=mT<CR>
+"Firefox4.*
+map <A-Down> :set toolbars=tabs,menu,bookmarks,addons,navigation<CR>
+map <A-Up> :set toolbars=tabs,menu,bookmarks,addons,nonavigation<CR>
 
 " . でbuffer
 map . :buffer<Space>
