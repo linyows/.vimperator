@@ -1,10 +1,9 @@
 do
     $ cd ~/
     $ git clone git@github.com:linyows/.vimperator.git .vimperator
-    $ cd .vimperator
-    $ ln -s vimperatorrc ../.vimperatorrc
+    $ ln -s .vimperator/vimperatorrc .vimperatorrc
     or
-    $ cp vimperatorrc ../.vimperatorrc
+    $ cp .vimperator/vimperatorrc .vimperatorrc
 
 plugin list
 
@@ -13,8 +12,8 @@ plugin list
     feedSomeKeys_2.js
     firebug.js
     googlesuggest.js
-    migratestatusbar.js
     nicontroller.js
     twitter.js
     youtubeamp.js
     bookmarktoolbar-hint.js
+    statusline-toolbar.js
