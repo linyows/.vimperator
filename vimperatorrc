@@ -22,7 +22,7 @@ set titlestring=Firefox
 "set guioptions+=B
 
 "Firefox4.*
-set toolbars=tabs,menu,bookmarks,noaddons,nonavigation
+set toolbars=notabs,nomenu,nobookmarks,noaddons,nonavigation
 
 " 多重タブを表示時クラッシュするのを防ぐ
 "set nopreload
@@ -134,7 +134,7 @@ map <S-Left> :tabmove! -1<CR>
 "map <A-Up> :set guioptions-=mT<CR>
 "Firefox4.*
 map <A-Down> :set toolbars=tabs,menu,bookmarks,noaddons,navigation<CR>
-map <A-Up> :set toolbars=tabs,menu,bookmarks,noaddons,nonavigation<CR>
+map <A-Up> :set toolbars=notabs,nomenu,nobookmarks,noaddons,nonavigation<CR>
 
 " . でbuffer
 map . :buffer<Space>
@@ -285,51 +285,5 @@ set hintmatching=custom
 " ----------------------------------------------------------------------------------------
 " CUSTOMIZE
 " ----------------------------------------------------------------------------------------
-
-" フィードボタンをステータスラインに移動
-" javascript <<EOM
-" (function () {
-"     var feedButton = document.getElementById('feed-button');
-"         feedButton.parentNode.removeChild(feedButton);
-"     var feedPanel  = document.createElement('statusbarpanel');
-"         feedPanel.setAttribute('id', 'feed-panel-clone');
-"         feedPanel.appendChild(feedButton.cloneNode(true));
-"     document.getElementById('status-bar').insertBefore(
-"         feedPanel,
-"         document.getElementById('security-button')
-"     );
-" })();
-" EOM
-
-"javascript <<EOM
-"liberator.globalVariables.migrate_elements = [
-    "{
-        "// star button of awesome bar
-        "id:    'star-button',
-        "dest:  'security-button',
-        "after: true,
-    "},
-    "{
-        "// icon that show the existence of RSS and Atom on current page
-        "id:    'feed-button',
-        "dest:  'security-button',
-        "after: true,
-    "},
-    "{
-        "// favicon of awesome bar
-        "id:    'page-proxy-stack',
-        "dest:  'liberator-statusline',
-        "after: false,
-    "},
-"];
-"EOM
-
-" clock style
-" let clock_format='%d %a %t'
-" style -name clock chrome://* <<EOM
-" #liberator-plugin-clock-box > * {
-"     color: gray !important;
-" }
-" EOM
 
 echo "Finish loading vimperatorrc!"
