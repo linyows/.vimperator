@@ -1,0 +1,3 @@
+[submodule "colors/indigo"]
+	path = colors/indigo
+	url = git://github.com/vimpr/vimperator-colors.git

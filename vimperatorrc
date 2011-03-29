@@ -22,7 +22,7 @@ set titlestring=Firefox
 "set guioptions+=B
 
 "Firefox4.*
-set toolbars=notabs,nomenu,nobookmarks,noaddons,nonavigation
+set toolbars=tabs,nomenu,bookmarks,noaddons,nonavigation
 
 " 多重タブを表示時クラッシュするのを防ぐ
 "set nopreload
@@ -65,6 +65,7 @@ set history=0
 
 " https://github.com/tlync/vimperator-addons/tree/master/colors
 colorscheme vimpwhite
+"colorscheme indigo
 "colorscheme vimplight
 
 " ----------------------------------------------------------------------------------------
@@ -134,7 +135,7 @@ map <S-Left> :tabmove! -1<CR>
 "map <A-Up> :set guioptions-=mT<CR>
 "Firefox4.*
 map <A-Down> :set toolbars=tabs,menu,bookmarks,noaddons,navigation<CR>
-map <A-Up> :set toolbars=notabs,nomenu,nobookmarks,noaddons,nonavigation<CR>
+map <A-Up> :set toolbars=tabs,nomenu,bookmarks,noaddons,nonavigation<CR>
 
 " . でbuffer
 map . :buffer<Space>
@@ -276,7 +277,6 @@ let g:matanico_status_format='$SERVICENAME:$COMMENT [$SUBJECT:$URL]'
 
 " statusline-toolbar.js
 "set statustoolbars=feed-button,noscript-tbb
-:style chrome://* #statusbar-display { display: none; }
 
 " migemo_hint.js
 set hintmatching=custom

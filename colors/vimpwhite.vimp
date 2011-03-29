@@ -28,3 +28,6 @@ style -name statusbar-background chrome://* #status-bar { padding-left: 5px !imp
 
 " リンクにマウスオーバーしたときに出る下部のラベルを非表示
 :style chrome://* #statusbar-display { display: none; }
+
+" feed icon customize
+"style -name toolbarbutton-feed-icon chrome://* #liberator-customize-toolbar > #feed-button { border: none !important; background: none !important; min-width: 0 !important; padding: 0 !important; }
