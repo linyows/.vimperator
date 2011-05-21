@@ -80,9 +80,12 @@ imap <M-a> <C-v><M-a>
 cmap <M-a> <C-v><M-a>
 
 " コピー
-map  <M-c> <C-v><M-c>
-imap <M-c> <C-v><M-c>
-cmap <M-c> <C-v><M-c>
+map  <M-c> <C-c>
+imap <M-c> <C-c>
+cmap <M-c> <C-c>
+"map  <M-c> <C-v><M-c>
+"imap <M-c> <C-v><M-c>
+"cmap <M-c> <C-v><M-c>
 
 " 元に戻す
 imap <M-z> <C-v><M-z>
