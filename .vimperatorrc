@@ -48,6 +48,12 @@
     " paste
     imap <M-v> <C-v><M-v>
     cmap <M-v> <C-v><M-v>
+    " visualmode
+    nmap <S-v> cv
+    vmap j <Down>
+    vmap k <Up>
+    vmap h <Left>
+    vmap l <Right>
     " タブを閉じたとき直前のタブにフォーカスさせる
     noremap d <M-W>
     " 選択文字列のgoogle検索
@@ -57,7 +63,7 @@
     map k 10<C-y>
     " J/Kに半ページスクロールを割り当て
     noremap J <C-d>
-    noremap K <C-u> 
+    noremap K <C-u>
     " h/lでタブ移動
     map h <C-p>
     map l <C-n>
@@ -95,7 +101,7 @@
     "inoremap <M-x> <S-Del>
     "cnoremap <M-x> <S-Del>
     "inoremap <M-z> <C-v><C-z>
-    "cnoremap <M-z> <C-v><C-z> 
+    "cnoremap <M-z> <C-v><C-z>
     "inoremap <M-v> <S-Insert>
     "cnoremap <M-v> <S-Insert>
 " }}}
