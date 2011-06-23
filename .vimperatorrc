@@ -57,16 +57,17 @@
     " タブを閉じたとき直前のタブにフォーカスさせる
     noremap d <M-W>
     " 選択文字列のgoogle検索
-    map <M-g> <C-v><M-c>P
+    "map <M-g> <C-v><M-c>P
+    vmap <silent> <M-g> y<Esc><Esc>P
     " j/k でのスクロール幅を変更
-    map j 10<C-e>
-    map k 10<C-y>
+    nmap j 10<C-e>
+    nmap k 10<C-y>
     " J/Kに半ページスクロールを割り当て
     noremap J <C-d>
     noremap K <C-u>
     " h/lでタブ移動
-    map h <C-p>
-    map l <C-n>
+    nmap h <C-p>
+    nmap l <C-n>
     " Shift+← / Shift+→でタブ位置変更
     map <S-Right> :tabmove! +1<CR>
     map <S-Left> :tabmove! -1<CR>
