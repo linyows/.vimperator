@@ -34,20 +34,20 @@
 " Windows: <C-a>, Mac: <M-a>
 " Mapping {{{
     " all select
-    imap <M-a> <C-v><M-a>
-    cmap <M-a> <C-v><M-a>
+    inoremap <M-a> <C-v><M-a>
+    cnoremap <M-a> <C-v><M-a>
     " copy
-    imap <M-c> <C-v><M-c>
-    cmap <M-c> <C-v><M-c>
+    inoremap <M-c> <C-v><M-c>
+    cnoremap <M-c> <C-v><M-c>
     " undo
-    imap <M-z> <C-v><M-z>
-    cmap <M-z> <C-v><M-z>
+    inoremap <M-z> <C-v><M-z>
+    cnoremap <M-z> <C-v><M-z>
     " cut
-    imap <M-x> <C-v><M-x>
-    cmap <M-x> <C-v><M-x>
+    inoremap <M-x> <C-v><M-x>
+    cnoremap <M-x> <C-v><M-x>
     " paste
-    imap <M-v> <C-v><M-v>
-    cmap <M-v> <C-v><M-v>
+    inoremap <M-v> <C-v><M-v>
+    cnoremap <M-v> <C-v><M-v>
     " visualmode
     nmap <S-v> cv
     vmap j <Down>
@@ -136,19 +136,19 @@
 
     " youtubemap.js {{{
         " プレーヤーに関しての情報を表示
-        map ,yi :ytinfo<cr>
+        "map ,yi :ytinfo<cr>
         " 再生 / 一時停止
         "map ,yp :ytpause<cr>
-        map p :ytpause<cr>
+        "map p :ytpause<cr>
         " 音声あり / なし
         "map ,ym :ytmute<cr>
-        map m :ytmute<cr>
+        "map m :ytmute<cr>
         " 最大化 / ノーマル
-        map ,yz :ytsize<cr>
+        "map ,yz :ytsize<cr>
         " 指定した場所にシーク 秒数で指定 指定なしの場合一番最初
-        map ,ys :ytseek<Space>
+        "map ,ys :ytseek<Space>
         " ボリューム 0-100
-        map ,yb :ytvolume<Space>
+        "map ,yb :ytvolume<Space>
     " }}}
 
     " bookmarktoolbar-hint.js
@@ -178,4 +178,4 @@
     " cnoremap <Down> <Tab>
 " }}}
 
-echo "Finish loading vimperatorrc!"
+"echo "Finish loading vimperatorrc!"
