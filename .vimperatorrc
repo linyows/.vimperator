@@ -28,6 +28,7 @@
     colorscheme vimpwhite
     "colorscheme indigo
     "colorscheme vimplight
+    set! ui.caretWidth=5
     " <C-i>でMacVimで編集
     set editor='/usr/bin/mvim -f'
 " }}}
