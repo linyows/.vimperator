@@ -3,9 +3,10 @@
 
 " Appearance {{{
     " ブラウザタイトルの変更
-    set titlestring=Firefox
-    "Firefox4.*
-    set toolbars=tabs,nomenu,bookmarks,noaddons,nonavigation
+    set titlestring=vimp
+    set toolbars=notabs,nomenu,nobookmarks,noaddons,nonavigation
+    set noscrollbars
+    set status=input,location,position
     " ビープ音を鳴らさずビジュアルベルを使用
     set visualbell
     " ビジュアルベルを無効化（1.2: set visualbellstyle=display:none;）
