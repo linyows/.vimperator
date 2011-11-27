@@ -12,15 +12,15 @@ var INFO =
         <li>Move the status-bar to the toolbar.</li>
         <li>Make the toolbarbuttons in the toolbar palette configurable
           <ul>
-            <li>Can customize by command (ex. <ex>:set statustoolbars=feed-button</ex>)</li>
+            <li>Can customize by command (ex. <ex>:set statuslinetoolbars=feed-button</ex>)</li>
             <li>Also, can drop the toolbarbutton from Customize Toolbar window</li>
           </ul>
         </li>
       </ul>
     </description>
     <item>
-      <tags>'statustoolbars'</tags>
-      <spec>'statustoolbars'</spec>
+      <tags>'slt' 'statuslinetoolbars'</tags>
+      <spec>'statuslinetoolbars' 'slt'</spec>
       <type>stringlist</type>
       <default></default>
       <description>
@@ -32,9 +32,6 @@ var INFO =
 </plugin>
 
 var updater = {
-  "noscript-tbb": [
-    function add(id) { noscriptOverlay.initPopups(); },
-  ],
   "star-button": [
     null,
     function rm(elm) {
@@ -42,6 +39,30 @@ var updater = {
     }
   ],
 };
+var css = <css><![CDATA[
+  #liberator-customize-toolbar {
+    border: none !important;
+    min-width: 5px !important;
+    max-height: 17px;
+  }
+  #liberator-customize-toolbar > :-moz-any(image, toolbarbutton) { max-height: 16px; }
+  #liberator-customize-toolbar .statusbar-resizerpanel { display: none; }
+  #liberator-customize-toolbar toolbarbutton { padding: 0 !important; }
+  #status-bar { background-color: transparent !important; }
+]]></css>.toString() +
+({
+  WINNT: <css></css>,
+  Linux: <css></css>,
+  Darwin: <css><![CDATA[
+    #liberator-customize-toolbar toolbarbutton {
+      background: transparent !important;
+      border: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  ]]></css>
+})[Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime).OS].toString();
+
 function $(id) document.getElementById(id);
 function createElement (name, attrs) {
   var elm = document.createElement("toolbar");
@@ -50,24 +71,18 @@ function createElement (name, attrs) {
   }
   return elm;
 }
+function customizeDone () {
+  window.BrowserToolboxCustomizeDone(true);
+}
 
+var gToolbox = gNavToolbox;
 var id = "liberator-customize-toolbar";
 if (!$(id)) {
   init();
 }
 
 function init () {
-  styles.addSheet(true, "customize-toolbar", "chrome://*", <css><![CDATA[
-    #liberator-customize-toolbar {
-      border: none !important;
-      min-width: 5px !important;
-      max-height: 17px;
-    }
-    #liberator-customize-toolbar > :-moz-any(image, toolbarbutton) {
-      max-height: 16px;
-    }
-    #liberator-customize-toolbar .statusbar-resizerpanel { display: none; }
-  ]]></css>.toString(), false);
+  styles.addSheet(true, "customize-toolbar", "chrome://*", css, false);
 
   var t = createToolbar();
   t.appendChild($("status-bar"));
@@ -76,7 +91,7 @@ function init () {
 
   config.toolbars.statuslinetoolbar = [[id], "Statusline Toolbar"];
 
-  options.add(["statustoolbars"], "Statusline Toolbar Sets",
+  options.add(["statuslinetoolbars", "slt"], "Statusline Toolbar Sets",
    "stringlist", "", {
      toolbar: t,
      getter: function () {
@@ -96,15 +111,15 @@ function init () {
            removeSets.splice(i, 1);
            continue;
          }
-         let elm = document.getElementById(id);
+         let elm = $(id);
          if (elm) {
            if (elm.parentNode !== t) {
              t.appendChild(elm);
-             if (updater[id] && typeof updater[id][0] == "function")
+             if (updater[id] && typeof updater[id][0] == "function") 
                updater[id][0](elm);
            }
            newSets.push(id);
-         } else if (gNavToolbox.palette.querySelector("#" + id)) {
+         } else if (gToolbox.palette.querySelector("#" + id)) {
            newSets.push(id);
          }
        }
@@ -112,17 +127,22 @@ function init () {
        t.setAttribute("currentset", newSets.join(","));
        updateSets(this.toolbar, newSets, removeSets);
        document.persist(this.toolbar.id, "currentset");
+       customizeDone();
        return val;
      },
      completer: function (context) {
-       context.completions = [["none","-"]].concat(Array.map(gNavToolbox.palette.children, function(elm) {
+       context.completions = [["none","-"]].concat(Array.map(gToolbox.palette.children, function(elm) {
          return [ elm.id, elm.getAttribute("label") || "-" ];
        }));
      },
-     validator: function (val) {
-       return true;
+     validator: function (ids) {
+       return ids.every(function(id) {
+         return ($(id) || gToolbox.palette.querySelector("#" + id));
+       });
      },
    });
+
+  customizeDone();
 }
 
 function updateSets (toolbar, newSets, removeSets) {
@@ -132,7 +152,7 @@ function updateSets (toolbar, newSets, removeSets) {
      }
   }
  for (let [, id] in Iterator(removeSets)) {
-   let elm = document.getElementById(id);
+   let elm = $(id);
    if (!elm)
      continue;
 
@@ -172,5 +192,3 @@ function createToolbar () {
 
 
 // vim: sw=2 ts=2 et:
-
-
