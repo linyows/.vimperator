@@ -25,7 +25,7 @@
     " command historyを0に
     set history=0
     " https://github.com/tlync/vimperator-addons/tree/master/colors
-    "colorscheme vimpwhite
+    colorscheme vimpwhite
     "colorscheme indigo
     "colorscheme vimplight
     set! ui.caretWidth=5
@@ -112,7 +112,7 @@
 " Plugin settings {{{
     " see http://vimperator.g.hatena.ne.jp/snaka72/20110504/1304538833
     " statusline {{{
-        set statuslinetoolbars=feed-button,firebug-button,greasemonkey-tbb,stylish-toolbar-button
+        :set statuslinetoolbars=feed-button,firebug-button,greasemonkey-tbb,stylish-toolbar-button
     " }}}
 
     " matanico.js {{{
